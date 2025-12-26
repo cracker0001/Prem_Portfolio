@@ -7,33 +7,32 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    }
-  }, []);
 
-  const toggleTheme = () => {
-    if (isDarkMode) {
+    if (storedTheme === "light") {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
       setIsDarkMode(false);
     } else {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
     }
+  }, []);
+
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    setIsDarkMode(isDark);
   };
 
   return (
     <button
       onClick={toggleTheme}
+      aria-label="Toggle theme"
       className={cn(
-        "fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outlin-hidden"
+        "fixed top-5 right-5 z-50 p-2 rounded-full",
+        "bg-background border shadow-sm",
+        "transition-colors duration-300",
+        "focus:outline-none"
       )}
     >
       {isDarkMode ? (
