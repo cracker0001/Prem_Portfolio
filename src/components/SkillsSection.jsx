@@ -1,27 +1,38 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import Icon from "../assets/html-css.png";
+import ReactIcon from "../assets/react_icon.png";
+import JavascriptIcon from "../assets/javascriptIcon.png";
+import TypescriptIcon from "../assets/TypescriptIcon.png";
+import TailwindIcon from "../assets/TailwindIcon.png";
+import NextjsIcon from "../assets/NextjsIcon.png";
+import NodeIcon from "../assets/NodeIcon.png";
+import ExpressIcon from "../assets/ExpressIcon.png";
+import mongoDbIcon from "../assets/mongoDbIcon.png";
+import postgIcon from "../assets/postg.webp";
+import githubIcon from "../assets/githubIcon.png";
+import figmaIcon from "../assets/figmaIcon.webp";
+import graphqlicon from "../assets/graphqlicon.webp";
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Next.js", level: 80, category: "frontend" },
 
-  // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "GraphQL", level: 60, category: "backend" },
+  { name: "HTML/CSS", category: "frontend",icon: Icon },
+  { name: "JavaScript", category: "frontend",icon: JavascriptIcon },
+  { name: "React", category: "frontend",icon: ReactIcon },
+  { name: "TypeScript", category: "frontend",icon: TypescriptIcon },
+  { name: "Tailwind CSS", category: "frontend",icon: TailwindIcon },
+  { name: "Next.js", category: "frontend",icon: NextjsIcon },
 
-  // Tools
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 70, category: "tools" },
-  { name: "Figma", level: 85, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
+  { name: "Node.js", category: "backend",icon: NodeIcon },
+  { name: "Express",category: "backend",icon: ExpressIcon },
+  { name: "MongoDB", category: "backend",icon: mongoDbIcon },
+  { name: "PostgreSQL", category: "backend",icon: postgIcon },
+  { name: "GraphQL", category: "backend",icon: graphqlicon },
+
+  { name: "Git/GitHub",  category: "tools",icon: githubIcon },
+  { name: "Docker", category: "tools" },
+  { name: "Figma", category: "tools",icon: figmaIcon },
+  { name: "VS Code", category: "tools" },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"];
@@ -62,21 +73,14 @@ export const SkillsSection = () => {
               key={key}
               className="bg-card p-6 rounded-lg shadow-xs card-hover"
             >
-              <div className="text-left mb-4">
+              <div className="text-left mb-4 flex justify-between items-center">
                 <h3 className="font-semibold text-lg"> {skill.name}</h3>
+                <img className="w-22 h-12 object-contain bg-transparent"src={skill.icon} alt="" />
               </div>
               <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
               </div>
 
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
-              </div>
+            
             </div>
           ))}
         </div>
