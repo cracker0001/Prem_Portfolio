@@ -13,6 +13,8 @@ import postgIcon from "../assets/postg.webp";
 import githubIcon from "../assets/githubIcon.png";
 import figmaIcon from "../assets/figmaIcon.webp";
 import graphqlicon from "../assets/graphqlicon.webp";
+import dockerIcon from "../assets/dockerIcon.jpg";
+import vsIcon from "../assets/vsIcon.png";
 
 const skills = [
 
@@ -30,9 +32,9 @@ const skills = [
   { name: "GraphQL", category: "backend",icon: graphqlicon },
 
   { name: "Git/GitHub",  category: "tools",icon: githubIcon },
-  { name: "Docker", category: "tools" },
+  { name: "Docker", category: "tools",icon: dockerIcon },
   { name: "Figma", category: "tools",icon: figmaIcon },
-  { name: "VS Code", category: "tools" },
+  { name: "VS Code", category: "tools",icon: vsIcon },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"];
@@ -71,11 +73,23 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              // className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              className="
+  bg-card 
+  p-6 
+  rounded-lg 
+  shadow-md 
+  hover:shadow-xl 
+  hover:ring-1 
+  hover:ring-primary/40
+  transition-all 
+  duration-300
+"
+
             >
               <div className="text-left mb-4 flex justify-between items-center">
                 <h3 className="font-semibold text-lg"> {skill.name}</h3>
-                <img className="w-22 h-12 object-contain bg-transparent"src={skill.icon} alt="" />
+                <img className="w-24 h-14 object-contain bg-transparent"src={skill.icon} alt="" />
               </div>
               <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
               </div>
